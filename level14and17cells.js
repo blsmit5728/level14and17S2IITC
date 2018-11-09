@@ -43,6 +43,7 @@ function wrapper(plugin_info) {
   // use own namespace for plugin
   window.plugin.showcells = function() {};
 
+  /*
   var input=document.createElement("input");
   input.type="button";
   input.value="Set Level";
@@ -65,6 +66,7 @@ function wrapper(plugin_info) {
       alert("Invalid cell value. Must be a number between 2 and 20");
     }
   }
+  */
 
   // use own namespace for plugin
   window.plugin.regions = function() {};
@@ -579,15 +581,14 @@ function wrapper(plugin_info) {
     // centre cell
     var zoom = map.getZoom();
     var maxzoom = 16;
-    if (window.plugin.showcells.cellLevel <= 14) maxzoom = 10;
-    if (window.plugin.showcells.cellLevel <= 8) maxzoom = 5;
-    if (zoom >= maxzoom) {  // 5 // ;;;;
-      // var cellSize = zoom>=7 ? 6 : 4;  // ;;;;vib
-      var cellSize = window.plugin.showcells.cellLevel;
-      var cell = S2.S2Cell.FromLatLng ( map.getCenter(), cellSize );
-
-      drawCellAndNeighbors(cell);
+    // make both cells...
+    var cell17 = S2.S2Cell.FromLatLng ( map.getCenter(), 17 );
+    var cell14 = S2.S2Cell.FromLatLng ( map.getCenter(), 14 );
+    if (zoom >= 16) {  
+        // only dar 17's when we are close in
+        drawCellAndNeighbors(cell17);            
     }
+    drawCellAndNeighbors(cell14);
 
 
     // the six cube side boundaries. we cheat by hard-coding the coords as it's simple enough
@@ -626,8 +627,10 @@ function wrapper(plugin_info) {
     // name
     var name = window.plugin.regions.regionName(cell);
 
-
-    var color = cell.level == 6 ? 'gold' : 'orange';
+    if (cell.level == 17)
+        var color = 'orange';
+    if (cell.level == 14)
+        var color = 'blue';
 
     // the level 6 cells have noticible errors with non-geodesic lines - and the larger level 4 cells are worse
     // NOTE: we only draw two of the edges. as we draw all cells on screen, the other two edges will either be drawn
