@@ -3,7 +3,7 @@
 // @name           IITC plugin: Show Level 14&17 S2 Cells
 // @author         vib
 // @category       Layer
-// @version        0.0.2
+// @version        0.0.4
 // @namespace      https://github.com/blsmit5728/level14and17S2IITC
 // @updateURL      https://raw.githubusercontent.com/blsmit5728/level14and17S2IITC/master/level14and17cells.js
 // @downloadURL    https://raw.githubusercontent.com/blsmit5728/level14and17S2IITC/master/level14and17cells.js
@@ -589,7 +589,9 @@ function wrapper(plugin_info) {
         // only dar 17's when we are close in
         drawCellAndNeighbors(cell17);            
     }
-    drawCellAndNeighbors(cell14);
+    if (zoom > 12) {
+        drawCellAndNeighbors(cell14);
+    }
 
 
     // the six cube side boundaries. we cheat by hard-coding the coords as it's simple enough
