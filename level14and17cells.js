@@ -1,13 +1,13 @@
 // ==UserScript==
-// @id             iitc-plugin-l17cells@vib
+// @id             iitc-plugin-l17_l14cells@vib
 // @name           IITC plugin: Show Level 14&17 S2 Cells
 // @author         vib
 // @category       Layer
-// @version        0.1.5
-// @namespace      https://github.com/vibrunazo/l17cells
-// @updateURL      https://raw.githubusercontent.com/vibrunazo/l17cells/master/l17cells.meta.js
-// @downloadURL    https://raw.githubusercontent.com/vibrunazo/l17cells/master/l17cells.user.js
-// @description    IITC: Shows level 17 cells on the map
+// @version        0.0.1
+// @namespace      https://github.com/blsmit5728/level14and17S2IITC
+// @updateURL      https://raw.githubusercontent.com/blsmit5728/level14and17S2IITC/master/level14and17cells.js
+// @downloadURL    https://raw.githubusercontent.com/blsmit5728/level14and17S2IITC/master/level14and17cells.js
+// @description    IITC: Shows level 17 and Level 14 cells on the map
 // @include        https://*.ingress.com/intel*
 // @include        http://*.ingress.com/intel*
 // @match          https://*.ingress.com/intel*
@@ -31,9 +31,9 @@ function wrapper(plugin_info) {
 
   //PLUGIN AUTHORS: writing a plugin outside of the IITC build environment? if so, delete these lines!!
   //(leaving them in place might break the 'About IITC' page or break update checks)
-  plugin_info.buildName = 'l17cells';
-  plugin_info.dateTimeVersion = '20170109.010105';
-  plugin_info.pluginId = 'l17cells';
+  plugin_info.buildName = 'l17_l14cells';
+  plugin_info.dateTimeVersion = '20181109.010105';
+  plugin_info.pluginId = 'l17_l14cells';
   //END PLUGIN AUTHORS NOTE
 
 
