@@ -3,10 +3,10 @@
 // @name           IITC plugin: Show Level 14&17 S2 Cells
 // @author         vib
 // @category       Layer
-// @version        0.0.4
+// @version        0.0.5
 // @namespace      https://github.com/blsmit5728/level14and17S2IITC
-// @updateURL      https://raw.githubusercontent.com/blsmit5728/level14and17S2IITC/master/level14and17cells.js
-// @downloadURL    https://raw.githubusercontent.com/blsmit5728/level14and17S2IITC/master/level14and17cells.js
+// @updateURL      https://raw.githubusercontent.com/blsmit5728/level14and17S2IITC/master/level14and17cells.user.js
+// @downloadURL    https://raw.githubusercontent.com/blsmit5728/level14and17S2IITC/master/level14and17cells.user.js
 // @description    IITC: Shows level 17 and Level 14 cells on the map
 // @include        https://*.ingress.com/intel*
 // @include        http://*.ingress.com/intel*
@@ -580,7 +580,7 @@ function wrapper(plugin_info) {
 
     // centre cell
     var zoom = map.getZoom();
-    alert("zoom_level=" + zoom);
+    //alert("zoom_level=" + zoom);
     var maxzoom = 16;
     // make both cells...
     var cell17 = S2.S2Cell.FromLatLng ( map.getCenter(), 17 );
