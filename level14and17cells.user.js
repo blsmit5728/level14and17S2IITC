@@ -5,7 +5,7 @@
 // @category       Layer
 // @version        0.0.6
 // @namespace      https://github.com/blsmit5728/level14and17S2IITC
-// @updateURL      https://raw.githubusercontent.com/blsmit5728/level14and17S2IITC/master/level14and17cells.meta.js
+// @updateURL      https://raw.githubusercontent.com/blsmit5728/level14and17S2IITC/master/level14and17cells.user.js
 // @downloadURL    https://raw.githubusercontent.com/blsmit5728/level14and17S2IITC/master/level14and17cells.user.js
 // @description    IITC: Shows level 17 and Level 14 cells on the map
 // @include        https://*.ingress.com/intel*
