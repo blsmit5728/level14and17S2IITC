@@ -3,10 +3,10 @@
 // @name           IITC plugin: Show Level 14&17 S2 Cells
 // @author         vib
 // @category       Layer
-// @version        0.0.1
+// @version        0.0.5
 // @namespace      https://github.com/blsmit5728/level14and17S2IITC
-// @updateURL      https://raw.githubusercontent.com/blsmit5728/level14and17S2IITC/master/level14and17cells.js
-// @downloadURL    https://raw.githubusercontent.com/blsmit5728/level14and17S2IITC/master/level14and17cells.js
+// @updateURL      https://raw.githubusercontent.com/blsmit5728/level14and17S2IITC/master/level14and17cells.user.js
+// @downloadURL    https://raw.githubusercontent.com/blsmit5728/level14and17S2IITC/master/level14and17cells.user.js
 // @description    IITC: Shows level 17 and Level 14 cells on the map
 // @include        https://*.ingress.com/intel*
 // @include        http://*.ingress.com/intel*
@@ -580,6 +580,7 @@ function wrapper(plugin_info) {
 
     // centre cell
     var zoom = map.getZoom();
+    //alert("zoom_level=" + zoom);
     var maxzoom = 16;
     // make both cells...
     var cell17 = S2.S2Cell.FromLatLng ( map.getCenter(), 17 );
@@ -588,7 +589,9 @@ function wrapper(plugin_info) {
         // only dar 17's when we are close in
         drawCellAndNeighbors(cell17);            
     }
-    drawCellAndNeighbors(cell14);
+    if (zoom > 12) {
+        drawCellAndNeighbors(cell14);
+    }
 
 
     // the six cube side boundaries. we cheat by hard-coding the coords as it's simple enough
@@ -635,7 +638,7 @@ function wrapper(plugin_info) {
     // the level 6 cells have noticible errors with non-geodesic lines - and the larger level 4 cells are worse
     // NOTE: we only draw two of the edges. as we draw all cells on screen, the other two edges will either be drawn
     // from the other cell, or be off screen so we don't care
-    var region = L.geodesicPolyline([corners[0],corners[1],corners[2]], {fill: false, color: color, opacity: 0.5, weight: 5, clickable: false });
+    var region = L.geodesicPolyline([corners[0],corners[1],corners[2]], {fill: false, color: color, opacity: 0.5, weight: 3, clickable: false });
 
     window.plugin.regions.regionLayer.addLayer(region);
 
