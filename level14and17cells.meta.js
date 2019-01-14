@@ -3,7 +3,7 @@
 // @name           IITC plugin: Show Level 14&17 S2 Cells
 // @author         vib
 // @category       Layer
-// @version        0.0.7
+// @version        0.0.8
 // @namespace      https://github.com/blsmit5728/level14and17S2IITC
 // @updateURL      https://raw.githubusercontent.com/blsmit5728/level14and17S2IITC/master/level14and17cells.meta.js
 // @downloadURL    https://raw.githubusercontent.com/blsmit5728/level14and17S2IITC/master/level14and17cells.meta.js
