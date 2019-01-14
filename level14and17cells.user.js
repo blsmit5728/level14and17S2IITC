@@ -3,11 +3,11 @@
 // @name           IITC plugin: Show Level 14&17 S2 Cells
 // @author         vib
 // @category       Layer
-// @version        0.0.6
+// @version        0.0.7
 // @namespace      https://github.com/blsmit5728/level14and17S2IITC
-// @updateURL      https://raw.githubusercontent.com/blsmit5728/level14and17S2IITC/master/level14and17cells.user.js
-// @downloadURL    https://raw.githubusercontent.com/blsmit5728/level14and17S2IITC/master/level14and17cells.user.js
-// @description    IITC: Shows level 17 and Level 14 cells on the map
+// @updateURL      https://raw.githubusercontent.com/blsmit5728/level14and17S2IITC/master/level14and17cells.meta.js
+// @downloadURL    https://raw.githubusercontent.com/blsmit5728/level14and17S2IITC/master/level14and17cells.meta.js
+// @description    IITC: Shows level 17/18 and Level 14 cells on the map
 // @include        https://*.ingress.com/intel*
 // @include        http://*.ingress.com/intel*
 // @match          https://*.ingress.com/intel*
@@ -583,10 +583,15 @@ function wrapper(plugin_info) {
     //alert("zoom_level=" + zoom);
     var maxzoom = 16;
     // make both cells...
+    var cell18 = S2.S2Cell.FromLatLng ( map.getCenter(), 18 );
     var cell17 = S2.S2Cell.FromLatLng ( map.getCenter(), 17 );
     var cell14 = S2.S2Cell.FromLatLng ( map.getCenter(), 14 );
+    if (zoom >= 18) {
+        // only draw 18's when we are close in
+        drawCellAndNeighbors(cell18);
+    }
     if (zoom >= 16) {  
-        // only dar 17's when we are close in
+        // only draw 17's when we are close in
         drawCellAndNeighbors(cell17);            
     }
     if (zoom > 12) {
@@ -629,7 +634,8 @@ function wrapper(plugin_info) {
 
     // name
     var name = window.plugin.regions.regionName(cell);
-
+    if (cell.level == 18)
+        var color = 'green';
     if (cell.level == 17)
         var color = 'orange';
     if (cell.level == 14)
