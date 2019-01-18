@@ -637,9 +637,9 @@ function wrapper(plugin_info) {
     if (cell.level == 18)
         var color = 'DeepPink';
     if (cell.level == 17)
-        var color = 'Blue';
+        var color = 'Orange';
     if (cell.level == 14)
-        var color = 'Chartreuse';
+        var color = 'Black';
 
     // the level 6 cells have noticible errors with non-geodesic lines - and the larger level 4 cells are worse
     // NOTE: we only draw two of the edges. as we draw all cells on screen, the other two edges will either be drawn
