@@ -3,7 +3,7 @@
 // @name           IITC plugin: Show Level 14&17 S2 Cells
 // @author         vib
 // @category       Layer
-// @version        0.0.8
+// @version        0.0.9
 // @namespace      https://github.com/blsmit5728/level14and17S2IITC
 // @updateURL      https://raw.githubusercontent.com/blsmit5728/level14and17S2IITC/master/level14and17cells.meta.js
 // @downloadURL    https://raw.githubusercontent.com/blsmit5728/level14and17S2IITC/master/level14and17cells.meta.js
@@ -583,13 +583,13 @@ function wrapper(plugin_info) {
     //alert("zoom_level=" + zoom);
     var maxzoom = 16;
     // make both cells...
-    var cell18 = S2.S2Cell.FromLatLng ( map.getCenter(), 18 );
+    //var cell18 = S2.S2Cell.FromLatLng ( map.getCenter(), 18 );
     var cell17 = S2.S2Cell.FromLatLng ( map.getCenter(), 17 );
     var cell14 = S2.S2Cell.FromLatLng ( map.getCenter(), 14 );
-    if (zoom >= 18) {
-        // only draw 18's when we are close in
-        drawCellAndNeighbors(cell18);
-    }
+    //if (zoom >= 18) {
+    //    // only draw 18's when we are close in
+    //    drawCellAndNeighbors(cell18);
+    //}
     if (zoom >= 16) {  
         // only draw 17's when we are close in
         drawCellAndNeighbors(cell17);            
@@ -637,9 +637,9 @@ function wrapper(plugin_info) {
     if (cell.level == 18)
         var color = 'DeepPink';
     if (cell.level == 17)
-        var color = 'Crimson';
+        var color = 'Blue';
     if (cell.level == 14)
-        var color = 'DarkViolet';
+        var color = 'Chartreuse';
 
     // the level 6 cells have noticible errors with non-geodesic lines - and the larger level 4 cells are worse
     // NOTE: we only draw two of the edges. as we draw all cells on screen, the other two edges will either be drawn
