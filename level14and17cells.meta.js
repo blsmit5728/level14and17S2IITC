@@ -1,7 +1,7 @@
 // ==UserScript==
-// @id             iitc-plugin-l17_l14cells@vib
+// @id             iitc-plugin-l17_l14cells@blsmit5728
 // @name           IITC plugin: Show Level 14&17 S2 Cells
-// @author         vib
+// @author         blsmit5728
 // @category       Layer
 // @version        0.1.0
 // @namespace      https://github.com/blsmit5728/level14and17S2IITC
