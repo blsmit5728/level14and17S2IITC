@@ -3,7 +3,7 @@
 // @name           IITC plugin: Show Level 14&17 S2 Cells
 // @author         blsmit5728
 // @category       Layer
-// @version        0.1.0
+// @version        0.2.0
 // @namespace      https://github.com/blsmit5728/level14and17S2IITC
 // @updateURL      https://raw.githubusercontent.com/blsmit5728/level14and17S2IITC/master/level14and17cells.user.js
 // @downloadURL    https://raw.githubusercontent.com/blsmit5728/level14and17S2IITC/master/level14and17cells.user.js
@@ -583,19 +583,28 @@ function wrapper(plugin_info) {
     //alert("zoom_level=" + zoom);
     var maxzoom = 16;
     // make both cells...
-    //var cell18 = S2.S2Cell.FromLatLng ( map.getCenter(), 18 );
+    var cell18 = S2.S2Cell.FromLatLng ( map.getCenter(), 18 );
     var cell17 = S2.S2Cell.FromLatLng ( map.getCenter(), 17 );
     var cell14 = S2.S2Cell.FromLatLng ( map.getCenter(), 14 );
+    var cell6 = S2.S2Cell.FromLatLng ( map.getCenter(), 6 );
     //if (zoom >= 18) {
     //    // only draw 18's when we are close in
     //    drawCellAndNeighbors(cell18);
     //}
+    if ( zoom >= 17 )
+    {
+      drawCellAndNeighbors(cell18);
+    }
     if (zoom >= 16) {  
         // only draw 17's when we are close in
         drawCellAndNeighbors(cell17);            
     }
     if (zoom > 12) {
         drawCellAndNeighbors(cell14);
+    }
+    if (zoom >= 10)
+    {
+      drawCellAndNeighbors(cell6);
     }
 
 
@@ -640,6 +649,8 @@ function wrapper(plugin_info) {
         var color = 'Orange';
     if (cell.level == 14)
         var color = 'Black';
+    if(cell.level == 6)
+        var color = 'Magenta';
 
     // the level 6 cells have noticible errors with non-geodesic lines - and the larger level 4 cells are worse
     // NOTE: we only draw two of the edges. as we draw all cells on screen, the other two edges will either be drawn
