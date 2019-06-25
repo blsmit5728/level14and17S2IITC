@@ -602,7 +602,7 @@ function wrapper(plugin_info) {
     if (zoom > 12) {
         drawCellAndNeighbors(cell14);
     }
-    if (zoom >= 10)
+    if (zoom <= 10)
     {
       drawCellAndNeighbors(cell6);
     }
