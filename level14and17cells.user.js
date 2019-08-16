@@ -3,11 +3,11 @@
 // @name           IITC plugin: Show Level 14&17 S2 Cells
 // @author         blsmit5728
 // @category       Layer
-// @version        0.4.0
+// @version        0.5.0
 // @namespace      https://github.com/blsmit5728/level14and17S2IITC
 // @updateURL      https://raw.githubusercontent.com/blsmit5728/level14and17S2IITC/master/level14and17cells.user.js
 // @downloadURL    https://raw.githubusercontent.com/blsmit5728/level14and17S2IITC/master/level14and17cells.user.js
-// @description    IITC: Shows level 17/18 and Level 14 cells on the map
+// @description    IITC: Shows level 17 and Level 14 cells on the map
 // @include        https://*.ingress.com/intel*
 // @include        http://*.ingress.com/intel*
 // @match          https://*.ingress.com/intel*
@@ -591,20 +591,23 @@ function wrapper(plugin_info) {
     //    // only draw 18's when we are close in
     //    drawCellAndNeighbors(cell18);
     //}
-    if ( zoom >= 20 )
-    {
-      drawCellAndNeighbors(cell18);
-    }
+    //if ( zoom >= 20 )
+    //{
+    //  drawCellAndNeighbors(cell18);
+    //}
     if (zoom >= 16) {  
         // only draw 17's when we are close in
         drawCellAndNeighbors(cell17);            
     }
-    if (zoom > 12) {
+    if (zoom >= 13) {
         drawCellAndNeighbors(cell14);
     }
     if (zoom <= 10)
     {
-      drawCellAndNeighbors(cell6);
+      if(zoom >=6)
+      {
+        drawCellAndNeighbors(cell6);
+      }
     }
 
 
