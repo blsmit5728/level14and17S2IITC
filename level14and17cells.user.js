@@ -1,5 +1,5 @@
 // ==UserScript==
-// @id             iitc-plugin-l17_l14cells@blsmit5728
+// @id             iitc-plugin-l17_l14cells
 // @name           IITC plugin: Show Level 14&17 S2 Cells
 // @author         blsmit5728
 // @category       Layer
