@@ -3,7 +3,7 @@
 // @name           IITC plugin: Show Level 14&17 S2 Cells
 // @author         blsmit5728
 // @category       Layer
-// @version        0.5.0
+// @version        0.6.0
 // @namespace      https://github.com/blsmit5728/level14and17S2IITC
 // @updateURL      https://raw.githubusercontent.com/blsmit5728/level14and17S2IITC/master/level14and17cells.user.js
 // @downloadURL    https://raw.githubusercontent.com/blsmit5728/level14and17S2IITC/master/level14and17cells.user.js
@@ -651,7 +651,7 @@ function wrapper(plugin_info) {
     if (cell.level == 17)
         var color = 'Orange';
     if (cell.level == 14)
-        var color = 'Black';
+        var color = 'Green';
     if(cell.level == 6)
         var color = 'Magenta';
 
