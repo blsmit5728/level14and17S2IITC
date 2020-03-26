@@ -3,7 +3,7 @@
 // @name           IITC plugin: Show Level 14&17 S2 Cells
 // @author         blsmit5728
 // @category       Layer
-// @version        0.6.0
+// @version        1.0.0
 // @namespace      https://github.com/blsmit5728/level14and17S2IITC
 // @updateURL      https://raw.githubusercontent.com/blsmit5728/level14and17S2IITC/master/level14and17cells.user.js
 // @downloadURL    https://raw.githubusercontent.com/blsmit5728/level14and17S2IITC/master/level14and17cells.user.js
@@ -43,33 +43,10 @@ function wrapper(plugin_info) {
   // use own namespace for plugin
   window.plugin.showcells = function() {};
 
-  /*
-  var input=document.createElement("input");
-  input.type="button";
-  input.value="Set Level";
-  input.onclick = setCellLevel;
-  input.setAttribute("style", "font-size:18px;position:absolute;top:120px;left:40px;color:black;cursor:pointer;pointer-events:all;z-index:2999;");
-  document.body.appendChild(input);
-
-  window.plugin.showcells.cellLevel = 17;
-
-  function setCellLevel()
-  {
-    var newCellLevel = prompt("Set a cell level", "17");
-    newCellLevel = parseInt(newCellLevel, 10);
-    //alert("new cell=" + newCellLevel);
-    if (newCellLevel !== isNaN && newCellLevel >= 2 && newCellLevel <= 20) {
-      //alert("Valid cell value");
-      window.plugin.showcells.cellLevel = newCellLevel;
-      window.plugin.regions.update();
-    } else {
-      alert("Invalid cell value. Must be a number between 2 and 20");
-    }
-  }
-  */
 
   // use own namespace for plugin
   window.plugin.regions = function() {};
+  window.plugin.regions.layerlist = {};
 
   window.plugin.regions.setup  = function() {
     /// S2 Geometry functions
@@ -379,7 +356,7 @@ function wrapper(plugin_info) {
     })();
 
 
-    window.plugin.regions.regionLayer = L.layerGroup();
+    //window.plugin.regions.regionLayer = L.layerGroup();
 
     $("<style>")
     .prop("type", "text/css")
@@ -393,6 +370,15 @@ function wrapper(plugin_info) {
       pointer-events: none;\
     }")
     .appendTo("head");
+    
+    window.plugin.regions.regionLayer = new L.LayerGroup();  
+	  window.addLayerGroup('Portal submit range', window.plugin.regions.regionLayer, true);      
+	  window.plugin.regions.layerlist['L14 and 17 Cells'] =  window.plugin.regions.regionLayer;
+      addHook('mapDataRefreshEnd', window.plugin.regions.update);    	
+	  window.pluginCreateHook('displayedLayerUpdated');
+	  
+      window.addHook('displayedLayerUpdated',  window.plugin.regions.setSelected);
+	  window.updateDisplayedLayerGroup = window.updateDisplayedLayerGroupModified;
 
     addLayerGroup('Score Regions', window.plugin.regions.regionLayer, true);
 
@@ -403,6 +389,19 @@ function wrapper(plugin_info) {
     window.plugin.regions.update();
   };
 
+  window.plugin.regions.setSelected = function(a) {        
+    if (a.display) {
+      var selectedLayer = window.plugin.regions.layerlist[a.name];      
+      if (selectedLayer !== undefined) {
+      	if (!window.map.hasLayer(selectedLayer)) {
+        	  window.map.addLayer(selectedLayer);
+      	}      
+      	if (window.map.hasLayer(selectedLayer)) {
+        	 window.plugin.regions.update();
+      	}
+      }      
+    }
+  }     
   window.plugin.regions.FACE_NAMES = [ 'AF', 'AS', 'NR', 'PA', 'AM', 'ST' ];
   window.plugin.regions.CODE_WORDS = [
     'ALPHA',    'BRAVO',   'CHARLIE', 'DELTA',
@@ -692,6 +691,12 @@ function wrapper(plugin_info) {
     //window.plugin.regions.regionLayer.addLayer(marker);  // ;;;;vib
   };
 
+  
+  window.updateDisplayedLayerGroupModified = function(name, display) {  
+  overlayStatus[name] = display;  
+  localStorage['ingress.intelmap.layergroupdisplayed'] = JSON.stringify(overlayStatus);
+  runHooks('displayedLayerUpdated', {name: name, display: display});
+  }
   var setup =  window.plugin.regions.setup;
 
   // PLUGIN END //////////////////////////////////////////////////////////
