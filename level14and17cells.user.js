@@ -3,7 +3,7 @@
 // @name           IITC plugin: Show Level 14&17 S2 Cells
 // @author         blsmit5728
 // @category       Layer
-// @version        1.0.0
+// @version        1.1.0
 // @namespace      https://github.com/blsmit5728/level14and17S2IITC
 // @updateURL      https://raw.githubusercontent.com/blsmit5728/level14and17S2IITC/master/level14and17cells.user.js
 // @downloadURL    https://raw.githubusercontent.com/blsmit5728/level14and17S2IITC/master/level14and17cells.user.js
@@ -372,7 +372,7 @@ function wrapper(plugin_info) {
     .appendTo("head");
     
     window.plugin.regions.regionLayer = new L.LayerGroup();  
-	  window.addLayerGroup('Portal submit range', window.plugin.regions.regionLayer, true);      
+	  window.addLayerGroup('L14 and L17 Cells', window.plugin.regions.regionLayer, true);      
 	  window.plugin.regions.layerlist['L14 and 17 Cells'] =  window.plugin.regions.regionLayer;
       addHook('mapDataRefreshEnd', window.plugin.regions.update);    	
 	  window.pluginCreateHook('displayedLayerUpdated');
