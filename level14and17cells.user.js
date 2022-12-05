@@ -32,7 +32,7 @@ function wrapper(plugin_info) {
   //PLUGIN AUTHORS: writing a plugin outside of the IITC build environment? if so, delete these lines!!
   //(leaving them in place might break the 'About IITC' page or break update checks)
   plugin_info.buildName = 'l17_l14cells';
-  plugin_info.dateTimeVersion = '20181109.010105';
+  plugin_info.dateTimeVersion = '20221205.000000';
   plugin_info.pluginId = 'l17_l14cells';
   //END PLUGIN AUTHORS NOTE
 
