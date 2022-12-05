@@ -3,7 +3,7 @@
 // @name           IITC plugin: Show Level 14&17 S2 Cells
 // @author         blsmit5728
 // @category       Layer
-// @version        1.1.0
+// @version        1.2.0
 // @namespace      https://github.com/blsmit5728/level14and17S2IITC
 // @updateURL      https://raw.githubusercontent.com/blsmit5728/level14and17S2IITC/master/level14and17cells.user.js
 // @downloadURL    https://raw.githubusercontent.com/blsmit5728/level14and17S2IITC/master/level14and17cells.user.js
@@ -585,6 +585,7 @@ function wrapper(plugin_info) {
     var cell18 = S2.S2Cell.FromLatLng ( map.getCenter(), 18 );
     var cell17 = S2.S2Cell.FromLatLng ( map.getCenter(), 17 );
     var cell14 = S2.S2Cell.FromLatLng ( map.getCenter(), 14 );
+    var cell12 = S2.S2Cell.FromLatLng ( map.getCenter(), 12 );
     var cell6 = S2.S2Cell.FromLatLng ( map.getCenter(), 6 );
     //if (zoom >= 18) {
     //    // only draw 18's when we are close in
@@ -600,7 +601,9 @@ function wrapper(plugin_info) {
     }
     if (zoom >= 13) {
         drawCellAndNeighbors(cell14);
+        drawCellAndNeighbors(cell12);
     }
+    
     if (zoom <= 10)
     {
       if(zoom >=6)
@@ -651,6 +654,8 @@ function wrapper(plugin_info) {
         var color = 'Orange';
     if (cell.level == 14)
         var color = 'Green';
+    if (cell.level == 12)
+        var color = 'DeepPink';
     if(cell.level == 6)
         var color = 'Magenta';
 
